@@ -31,6 +31,9 @@ app.listen(5000, () => {
 });
 
 app.use('/products', productsRouter);
+app.use('/', (req, res) => {
+ res.status(200).json('Welcome to vercel')
+})
 // app.use('/products/:id', productsRouter);
 
 
