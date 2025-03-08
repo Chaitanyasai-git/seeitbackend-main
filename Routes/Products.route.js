@@ -1,15 +1,16 @@
 const express = require('express');
-const router = express.Router();
+const 
+router = express.Router();
 
-const Product = require('./Product.model.js');
-const { generateProductId } = require('./helperFunctions');
+const Product = require('../Models/Product.model.js');
+const { generateProductId } = require('../helperFunctions.js');
 
 router.get('/', async (req, res) => {
    try {
     const products = await Product.find({}, {_id: 0, __v: 0});
     res.json({
      status: 200,
-     message: 'Products fetched successfully',
+     message: 'Products fetched successfullhhhy',
      data: products
     });
    } catch (error) {
@@ -17,16 +18,16 @@ router.get('/', async (req, res) => {
    }
 });
 
-router.post('/', (req, res) => {
-    const product = new Product({
-        productId: generateProductId(),
-        name: req.body.name,
-        price: req.body.price,
-        description: req.body.description
-    });
-    product.save();
-    res.json(product);
-});
+// router.post('/', (req, res) => {
+//     const product = new Product({
+//         productId: generateProductId(),
+//         name: req.body.name,
+//         price: req.body.price,
+//         description: req.body.description
+//     });
+//     product.save();
+//     res.json(product);
+// });
 
 router.get('/:id', async (req, res) => {
     const id = req?.params?.id;

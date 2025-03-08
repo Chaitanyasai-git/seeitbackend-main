@@ -6,8 +6,9 @@ app.use(express.urlencoded({ extended: true }));
 
 const mongoose = require('mongoose');
 const cors = require('cors');
-const productsRouter = require('./Products.route')
-
+const productsRouter = require('./Routes/Products.route')
+const productRouter = require('./Routes/Product.route')
+const loginRouter = require('./Routes/Login.route')
 app.use(cors());
 
 
@@ -31,6 +32,8 @@ app.listen(5000, () => {
 });
 
 app.use('/products', productsRouter);
+app.use('/addProduct', productRouter)
+app.use('/createUser', loginRouter)
 app.use('/', (req, res) => {
  res.status(200).json('Welcome to vercel')
 })
